@@ -5,7 +5,9 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  TF_WORKING_DIR: 'infra/terraform'
+- group: aivargroup
+- name: TF_WORKING_DIR
+  value: 'infra/terraform'
 
 steps:
 - checkout: self

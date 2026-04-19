@@ -1,3 +1,4 @@
+import os
 from langchain_openai import ChatOpenAI
 from langchain.agents import initialize_agent, Tool, AgentType
 from pathlib import Path
@@ -19,8 +20,8 @@ def terraform_plan_tool(_: str) -> str:
 
 def devops_deploy_tool(branch: str) -> str:
   run_id = trigger_azure_devops_pipeline(
-      org="YOUR_ORG",
-      project="YOUR_PROJECT",
+      org="AIPlayground13",
+      project="azure-ai-terraform",
       pipeline_id=1,
       branch=branch,
       pat_token="YOUR_PAT"
