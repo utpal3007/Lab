@@ -14,7 +14,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Terraform Init/Plan/Apply'
   inputs:
-    azureSubscription: 'YOUR-SERVICE-CONNECTION'   # Service connection name
+    azureSubscription: 'aiserviceconn'   # Service connection name
     scriptType: bash
     scriptLocation: inlineScript
     inlineScript: |
