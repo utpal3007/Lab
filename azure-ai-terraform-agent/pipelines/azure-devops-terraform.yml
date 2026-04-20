@@ -1,0 +1,34 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- group: aivargroup
+- name: TF_WORKING_DIR
+  value: 'infra/terraform'
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- task: AzureCLI@2
+  displayName: 'Terraform Init / Plan / Apply'
+  inputs:
+    azureSubscription: 'aiserviceconn'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      cd $(TF_WORKING_DIR)
+
+      terraform init
+
+      echo "Running terraform plan..."
+      terraform plan \
+        -var="environment=dev" \
+        -var="location=westeurope" \
+        -out=tfplan
+
+      echo "Applying terraform..."
+      terraform apply -auto-approve tfplan

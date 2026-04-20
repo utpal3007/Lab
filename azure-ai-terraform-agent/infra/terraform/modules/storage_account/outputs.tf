@@ -1,0 +1,20 @@
+output "name" {
+  description = "Storage account name"
+  value       = azurerm_storage_account.this.name
+}
+
+output "id" {
+  description = "Storage account Azure ID"
+  value       = azurerm_storage_account.this.id
+}
+
+output "primary_blob_endpoint" {
+  description = "Primary blob service endpoint"
+  value       = azurerm_storage_account.this.primary_blob_endpoint
+}
+
+output "primary_access_key" {
+  description = "Primary access key"
+  value       = azurerm_storage_account.this.primary_access_key
+  sensitive   = true
+}
